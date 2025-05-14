@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct GroceryItem: Identifiable {
+struct GroceryItem: Identifiable, Equatable {
     let id = UUID()
     let name: String
 }

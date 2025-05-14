@@ -13,5 +13,6 @@ struct RowView: View {
 
     var body: some View {
         Text(item.name)
+            .padding(.vertical, 8)
     }
 }
