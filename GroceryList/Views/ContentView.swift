@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var groceryItems: [GroceryItem] = []
-    @State private var isNavigatingToAddItem = false
+    @State private var isNavigatingToAddItem = false // check if navigation is active
     @State private var itemToDelete: GroceryItem? = nil
     @State private var showDeleteAlert = false
     
@@ -44,7 +44,7 @@ struct ContentView: View {
             }
             .navigationTitle(Strings.groceryListTitle)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) { //toolbar right button
                     Button(action: {
                         isNavigatingToAddItem = true
                     }) {
