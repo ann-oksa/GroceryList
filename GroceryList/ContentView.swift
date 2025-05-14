@@ -34,6 +34,7 @@ struct ContentView: View {
                 NavigationLink(
                     destination: AddItemView { newItem in
                         groceryItems.append(newItem)
+                        GroceryStorage.save(groceryItems)
                         isNavigatingToAddItem = false
                     },
                     isActive: $isNavigatingToAddItem
@@ -55,9 +56,13 @@ struct ContentView: View {
                 Button("Delete", role: .destructive) {
                     if let index = groceryItems.firstIndex(of: item) {
                         groceryItems.remove(at: index)
+                        GroceryStorage.save(groceryItems)
                     }
                 }
                 Button("Cancel", role: .cancel) {}
+            }
+            .onAppear {
+                groceryItems = GroceryStorage.load()
             }
         }
     }
