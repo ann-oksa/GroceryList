@@ -17,7 +17,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 if groceryItems.isEmpty {
-                    Text("No items")
+                    Text(Strings.noItems)
                         .foregroundColor(.gray)
                         .padding()
                 } else {
@@ -42,7 +42,7 @@ struct ContentView: View {
                     EmptyView()
                 }
             }
-            .navigationTitle("Grocery List")
+            .navigationTitle(Strings.groceryListTitle)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -52,14 +52,14 @@ struct ContentView: View {
                     }
                 }
             }
-            .alert("Are you sure you want to remove this item?", isPresented: $showDeleteAlert, presenting: itemToDelete) { item in
-                Button("Delete", role: .destructive) {
+            .alert(Strings.deleteConfirmationTitle, isPresented: $showDeleteAlert, presenting: itemToDelete) { item in
+                Button(Strings.delete, role: .destructive) {
                     if let index = groceryItems.firstIndex(of: item) {
                         groceryItems.remove(at: index)
                         GroceryStorage.save(groceryItems)
                     }
                 }
-                Button("Cancel", role: .cancel) {}
+                Button(Strings.cancel, role: .cancel) {}
             }
             .onAppear {
                 groceryItems = GroceryStorage.load()

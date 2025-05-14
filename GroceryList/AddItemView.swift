@@ -13,14 +13,14 @@ struct AddItemView: View {
 
     var body: some View {
         Form {
-            TextField("Item name", text: $itemName)
+            TextField(Strings.itemName, text: $itemName)
 
-            Button("Add Item") {
+            Button(Strings.add) {
                 let newItem = GroceryItem(name: itemName)
                 onAdd(newItem)
             }
             .disabled(itemName.trimmingCharacters(in: .whitespaces).isEmpty)
         }
-        .navigationTitle("Add Item")
+        .navigationTitle(Strings.add)
     }
 }
